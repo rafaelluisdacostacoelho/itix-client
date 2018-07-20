@@ -19,6 +19,7 @@ dist
 .tmp
 tmp
 npm-debug.log
+package-lock.json
 
 # Ignore Test reporters #
 #########################
