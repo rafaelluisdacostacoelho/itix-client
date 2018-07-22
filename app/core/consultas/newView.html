@@ -6,8 +6,8 @@
         <form name="form" data-ng-submit="vm.adicionarAConsulta()">
             <div class="form-group">
                 <label class="control-label" for="todoDate">Paciente:</label>
-                <select id="pacientes" class="form-control" data-ng-options="paciente.id as paciente.nome for paciente in vm.pacientes" name="pacientes" data-ng-model="vm.consulta.pacienteId"
-                    required>
+                <select id="pacientes" class="form-control" data-ng-options="paciente.id as paciente.nome for paciente in vm.pacientes" name="pacientes"
+                    data-ng-model="vm.consulta.pacienteId" required>
                     <option value="">Selecione um Paciente...</option>
                 </select>
             </div>
@@ -16,16 +16,17 @@
                 <div class="form-inline">
                     De
                     <input id="consulta-dataInicial" class="form-control" ng-model="vm.consulta.dataInicial" ng-model-options="{ updateOn: 'blur' }"
-                        moment-picker="vm.dataInicial" autocomplete="off" min-view="month" locale="pt-br" max-date="vm.consulta.dataFinal" format="DD/MM/YYYY HH:mm" required>
-                    Até
+                        moment-picker="vm.dataInicial" autocomplete="off" min-view="month" locale="pt-br" max-date="vm.consulta.dataFinal"
+                        format="DD/MM/YYYY HH:mm" required> Até
                     <input id="consulta-dataFinal" class="form-control" ng-model="vm.consulta.dataFinal" ng-model-options="{ updateOn: 'blur' }"
-                        moment-picker="vm.dataFinal" autocomplete="off" min-view="month" locale="pt-br" min-date="vm.consulta.dataInicial" format="DD/MM/YYYY HH:mm" required>
+                        moment-picker="vm.dataFinal" autocomplete="off" min-view="month" locale="pt-br" min-date="vm.consulta.dataInicial"
+                        format="DD/MM/YYYY HH:mm" required>
                 </div>
             </div>
             <div class="form-group">
                 <label class="control-label" for="todoName">Observações:</label>
-                <textarea id="todo-name" class="form-control" name="observacoesDaConsulta" type="text" data-ng-model="vm.consulta.observacoes" rows="4"
-                    style="resize: none;" required />
+                <textarea id="todo-name" class="form-control" name="observacoesDaConsulta" type="text" data-ng-model="vm.consulta.observacoes"
+                    rows="4" style="resize: none;" required />
             </div>
             <button type="button" id="back-button" data-ui-sref="root.consultas.list" class="btn btn-default">
                 <span class="glyphicon glyphicon-chevron-left"></span> Voltar
@@ -34,6 +35,5 @@
                 <span class="glyphicon glyphicon-ok"></span> Adicionar
             </button>
         </form>
-        {{vm.consulta}}
     </div>
 </div>
