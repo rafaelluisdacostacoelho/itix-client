@@ -2,51 +2,32 @@
     'use strict';
 
     angular
-        .module('app.consultas.new', ['ui.router', 'app.categoriesService'])
+        .module('app.consultas.new', ['ui.router', 'app.services.consultas'])
         .controller('NovaConsultaController', NovaConsultaController);
 
-    NovaConsultaController.$inject = [
-        '$scope',
-        '$state',
-        '$log',
-        'categoriesService'
-    ];
+    NovaConsultaController.$inject = ['$state', 'consultasService', 'pacientesService'];
 
-    function NovaConsultaController($scope, $state, $log, categoriesService) {
+    function NovaConsultaController($state, consultasService, pacientesService) {
         var vm = this;
 
-        vm.addConsulta = addConsulta;
-        vm.categories = [];
-        vm.formData = {
-            type: vm.categories[0],
-            estimates: (vm.estimates = 1)
-        };
+        vm.pacientes = [];
 
-        retrieve();
+        vm.adicionarAConsulta = adicionarAConsulta;
 
-        function retrieve() {
-            return getCategories().then(function() {
-                $log.info('Retrieved Categories');
+        obterOsPacientes();
+
+        function obterOsPacientes() {
+            return pacientesService.obterOsPacientes().then(function(data) {
+                vm.pacientes = data;
             });
         }
 
-        function getCategories() {
-            return categoriesService.getCategories().then(function(data) {
-                vm.categories = data;
-                return vm.categories;
+        function adicionarAConsulta() {
+            vm.consulta.dataInicial = moment(vm.consulta.dataInicial).format('YYYY-MM-DD HH:mm:ss');
+            vm.consulta.dataFinal = moment(vm.consulta.dataFinal).format('YYYY-MM-DD HH:mm:ss');
+            consultasService.adicionarAConsulta(vm.consulta).then(function() {
+                $state.go('root.consultas.list');
             });
-        }
-
-        function addConsulta() {
-            $scope.IC.consultas.push({
-                title: vm.formData.newTodo,
-                done: false,
-                type: vm.formData.type,
-                estimates: vm.formData.estimates,
-                date: vm.formData.date
-            });
-            vm.formData.newTodo = '';
-            $state.go('root.consultas.list');
         }
     }
 })();

@@ -1,57 +1,43 @@
 <div class="panel panel-primary">
     <div class="panel-heading">
-        <h3 class="panel-title">To-do list</h3>
+        <h3 class="panel-title">Lista de Consultas</h3>
     </div>
     <div class="panel-body">
-        <div class="input-group">
+        <div class="form-group input-group">
             <span class="input-group-addon">
                 <i class="glyphicon glyphicon-search"></i>
             </span>
-            <input id="search" type="search" class="form-control" placeholder="Search..." data-ng-model="search">
+            <input id="search" type="search" class="form-control" placeholder="Pesquisa..." data-ng-model="search.paciente.nome">
+        </div>
+        <div class="form-group">
+            <button id="add-consulta-btn" data-ui-sref="root.consultas.new" class="btn btn-success">
+                <span class="glyphicon glyphicon-plus"></span> Adicionar
+            </button>
         </div>
         <div class="table-responsive">
             <table class="table table-striped">
                 <thead>
                     <tr>
-                        <th class="col-xs-1">No.</th>
-                        <th class="col-xs-7">Name</th>
-                        <th class="col-xs-1">Estimation</th>
-                        <th class="col-xs-1">Date</th>
-                        <th class="col-xs-1">Ico</th>
-                        <th class="col-xs-1">Completed</th>
+                        <th class="col-xs-8">Paciente</th>
+                        <th class="col-xs-8">Horário da Consulta</th>
                     </tr>
                 </thead>
-                <tr data-ng-repeat="consulta in IC.consultas | filter: search" class="repeat-animation">
-                    <td>{{$index + 1}}. </td>
+                <tr data-ng-repeat="consulta in filtro = (vm.consultas | filter:search)" class="repeat-animation">
                     <td>
-                        <span class="done-{{consulta.done}}">{{consulta.title}}</span>
+                        <a data-ui-sref="root.consultas.consulta.details({consultaId: consulta.id})">
+                            {{consulta.paciente.nome}}
+                        </a>
                     </td>
                     <td>
-                        <span class="done-{{consulta.done}}">({{consulta.estimates}}h)</span>
+                        De {{consulta.dataInicial | date:'dd/MM/yyyy HH:mm'}} até {{ consulta.dataFinal | date:'dd/MM/yyyy HH:mm' }}
                     </td>
-                    <td>
-                        <span class="done-{{consulta.done}}">{{consulta.date}}</span>
-                    </td>
-                    <td>
-                        <span class="glyphicon glyphicon-{{consulta.type.gico}} done-{{consulta.done}}" title="{{consulta.type.name}}"></span>
-                    </td>
-                    <td>
-                        <input type="checkbox" data-ng-model="consulta.done" title="Mark as completed" />
+                </tr>
+                <tr ng-show="filtro.length === 0">
+                    <td colspan="2">
+                        Nenhum registro encontrado.
                     </td>
                 </tr>
             </table>
         </div>
-    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-body">
-        <button id="delete-btn" class="btn btn-danger" data-ng-click="PLC.remove()">
-            Remover
-            <span class="glyphicon glyphicon-remove"></span>
-        </button>
-        <button id="add-btn" data-ui-sref="root.consultas.new" class="btn btn-success">
-            Nova Consulta
-            <span class="glyphicon glyphicon-plus"></span>
-        </button>
     </div>
 </div>

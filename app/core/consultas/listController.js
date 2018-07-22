@@ -2,21 +2,24 @@
     'use strict';
 
     angular
-        .module('app.consultas.list', ['ngAnimate'])
+        .module('app.consultas.list', ['ngAnimate', 'app.services.consultas'])
+        .controller('ListaDeConsultasController', ListaDeConsultasController);
 
-        .controller('TodosListController', TodosListController);
+    ListaDeConsultasController.$inject = ['consultasService'];
 
-    TodosListController.$inject = ['$scope'];
-
-    function TodosListController($scope) {
+    function ListaDeConsultasController(consultasService) {
         var vm = this;
 
-        vm.deleteCompleted = deleteCompleted;
+        vm.consultas = [];
 
-        function deleteCompleted() {
-            $scope.IC.consultas = $scope.IC.consultas.filter(function(item) {
-                return !item.done;
-            });
+        obterAsConsultas();
+
+        function obterAsConsultas() {
+            return consultasService
+                .obterAsConsultas()
+                .then(function(consultas) {
+                    vm.consultas = consultas;
+                });
         }
     }
 })();

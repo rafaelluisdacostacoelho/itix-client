@@ -2,29 +2,49 @@
     'use strict';
 
     angular
-        .module('app.consultasService', [])
+        .module('app.services.consultas', [])
         .factory('consultasService', consultasService);
 
-    consultasService.$inject = ['$http', '$log', '$q'];
+    consultasService.$inject = ['$http'];
 
-    function consultasService($http, $log, $q) {
-        return { getConsultas: getConsultas };
+    function consultasService($http) {
+        var url = 'https://localhost:44331/api/consultas';
 
-        function getConsultas() {
-            return $http
-                .get('assets/data/consultas.json')
-                .then(getConsultasComplete)
-                .catch(getConsultasFailed);
+        return {
+            adicionarAConsulta: adicionarAConsulta,
+            obterAsConsultas: obterAsConsultas,
+            obterAConsultaPeloId: obterAConsultaPeloId,
+            atualizarAConsulta: atualizarAConsulta,
+            removerAConsultaPeloId: removerAConsultaPeloId
+        };
 
-            function getConsultasComplete(response) {
+        // POST api/consultas
+        function adicionarAConsulta(paciente) {
+            return $http.post(url, paciente);
+        }
+
+        // GET api/consultas
+        function obterAsConsultas() {
+            return $http.get(url).then(function(response) {
                 return response.data;
-            }
+            });
+        }
 
-            function getConsultasFailed(e) {
-                var newMessage = 'XHR Failed for getConsultas.';
-                $log.error(newMessage);
-                return $q.reject(e);
-            }
+        // GET api/consultas/{id}
+        function obterAConsultaPeloId(id) {
+            return $http.get(url + '/' + id).then(function(response) {
+                return response.data;
+            });
+        }
+
+        // PUT api/consultas/{id}
+        function atualizarAConsulta(id, paciente) {
+            return $http.put(url + '/' + id, paciente);
+        }
+
+        // DELETE api/consultas/{id}
+        function removerAConsultaPeloId(id) {
+            return $http.delete(url + '/' + id);
         }
     }
 })();

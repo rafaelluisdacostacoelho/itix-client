@@ -13,6 +13,7 @@
         $urlRouterProvider.when('/consultas', '/consultas/list');
         $urlRouterProvider.when('/consultas/', '/consultas/list');
         $urlRouterProvider.otherwise('/');
+
         $stateProvider
             .state('root', {
                 abstract: true,
@@ -43,15 +44,13 @@
                 abstract: true,
                 url: 'pacientes',
                 data: {
-                    title: 'Pacientes',
-                    breadcrumb: 'Pacientes'
+                    title: 'Pacientes'
                 }
             })
             .state('root.pacientes.list', {
                 url: '/list',
                 data: {
-                    title: 'Lista de pacientes',
-                    breadcrumb: 'Lista'
+                    title: 'Lista de pacientes'
                 },
                 views: {
                     'content@': {
@@ -64,8 +63,7 @@
             .state('root.pacientes.new', {
                 url: '/new',
                 data: {
-                    title: 'Novo Paciente',
-                    breadcrumb: 'Novo'
+                    title: 'Novo Paciente'
                 },
                 views: {
                     'content@': {
@@ -77,17 +75,12 @@
             })
             .state('root.pacientes.paciente', {
                 abstract: true,
-                url: '/:pacienteId',
-                data: {
-                    title: '[Nome do Paciente]',
-                    breadcrumb: '[Nome do Paciente]'
-                }
+                url: '/:pacienteId'
             })
             .state('root.pacientes.paciente.details', {
                 url: '/details',
                 data: {
-                    title: 'Detalhes do Paciente',
-                    breadcrumb: 'Detalhes'
+                    title: 'Detalhes do Paciente'
                 },
                 views: {
                     'content@': {
@@ -103,35 +96,49 @@
                 abstract: true,
                 url: 'consultas',
                 data: {
-                    title: 'Pacientes',
-                    breadcrumb: 'Pacientes'
+                    title: 'Consultas'
                 }
             })
             .state('root.consultas.list', {
                 url: '/list',
                 data: {
-                    title: 'Lista de consultas',
-                    breadcrumb: 'Lista'
+                    title: 'Lista de Consultas'
                 },
                 views: {
                     'content@': {
                         templateUrl: 'core/consultas/listView.html',
-                        controller: 'ListaDePacientesController',
-                        controllerAs: 'PLC'
+                        controller: 'ListaDeConsultasController',
+                        controllerAs: 'vm'
                     }
                 }
             })
             .state('root.consultas.new', {
                 url: '/new',
                 data: {
-                    title: 'Novo Paciente',
-                    breadcrumb: 'Novo'
+                    title: 'Nova Consulta'
                 },
                 views: {
                     'content@': {
                         templateUrl: 'core/consultas/newView.html',
-                        controller: 'NovoPacienteController',
-                        controllerAs: 'PNC'
+                        controller: 'NovaConsultaController',
+                        controllerAs: 'vm'
+                    }
+                }
+            })
+            .state('root.consultas.consulta', {
+                abstract: true,
+                url: '/:consultaId'
+            })
+            .state('root.consultas.consulta.details', {
+                url: '/details',
+                data: {
+                    title: 'Detalhes da Consulta'
+                },
+                views: {
+                    'content@': {
+                        templateUrl: 'core/consultas/detailsView.html',
+                        controller: 'DetalhesDaConsultaController',
+                        controllerAs: 'vm'
                     }
                 }
             });

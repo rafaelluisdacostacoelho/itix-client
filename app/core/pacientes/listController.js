@@ -12,11 +12,7 @@
 
         vm.pacientes = [];
 
-        retrieve();
-
-        function retrieve() {
-            return obterOsPacientes();
-        }
+        obterOsPacientes();
 
         function obterOsPacientes() {
             return pacientesService.obterOsPacientes().then(function(data) {

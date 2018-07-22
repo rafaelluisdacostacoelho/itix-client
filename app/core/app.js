@@ -10,6 +10,9 @@
         'app.pacientes.new',
         'app.pacientes.details',
         'app.pacientes.list',
+        'app.consultas.new',
+        'app.consultas.details',
+        'app.consultas.list',
         'app.directives.datepicker',
         'app.directives.about',
         'app.filters'
