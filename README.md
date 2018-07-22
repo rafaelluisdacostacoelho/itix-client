@@ -2,11 +2,14 @@
 
 Trabalhe Conosco - Desafio 01
 
+Este projeto trabalha em conjunto com o projeto [Itix Server](https://github.com/rafaelluisdacostacoelho/itix-server).
+
 ## Pendências
 
 -   Configurar a integração contínua.
 -   Implementar os testes unitários.
 -   Implementar os testes end-to-end.
+-   Estruturar configurações da API usadas pelos serviços de acordo com o ambiente de desenvolvimento, homologação e produção.
 
 ## Começando
 
@@ -18,7 +21,7 @@ Você precisa do git para clonar o repositório itix-client. Você pode obter o 
 
 Também usamos várias ferramentas node.js para inicializar e testar o itix-client. Você deve ter o node.js e seu gerenciador de pacotes (npm) instalados. Você pode obtê-los em http://nodejs.org/.
 
-## Clone itix-client
+## Clone o itix-client
 
 Clone o repositório itix-client usando o git:
 
@@ -29,6 +32,10 @@ Se você quer apenas iniciar um novo projeto sem o histórico de commits itix-cl
 
 `git clone --depth = 1 https://github.com/rafaelluisdacostacoelho/itix-client.git <nome do seu projeto>`
 O `depth = 1` diz ao git para extrair apenas um commit dos dados históricos.
+
+# Configurações
+
+Modifique as variáveis `url` dos arquivos `app/core/consultas/consultasService.js` e `app/core/pacientes/pacientesService.js` de acordo com a url do servidor de WebAPI.
 
 ## Instalar dependências
 
