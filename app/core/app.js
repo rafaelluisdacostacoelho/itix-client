@@ -5,6 +5,7 @@
         'ui.router',
         'app.index',
         'moment-picker',
+        'toastr',
         'app.navigation.footer',
         'app.navigation.navigation',
         'app.pacientes.new',

@@ -30,7 +30,8 @@
     "bootstrap": "^3.3.6",
     "jquery-ui": "^1.11.4",
     "angular-moment-picker": "moment-picker#^0.10.2",
-    "moment": "^2.22.2"
+    "moment": "^2.22.2",
+    "angular-toastr": "^2.1.1"
   },
   "private": false
 }

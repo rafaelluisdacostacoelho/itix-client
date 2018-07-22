@@ -58,11 +58,11 @@ Observe que a pasta bower_components normalmente seria instalada na pasta raiz, 
 
 ## Execute o aplicativo
 
-Nós pré-configuramos o projeto com um servidor web de desenvolvimento simples. A maneira mais simples de iniciar este servidor é:
+Pré-configurei o projeto com um servidor web de desenvolvimento simples. A maneira mais simples de iniciar este servidor é:
 
 `npm start`
 Agora navegue até o aplicativo em http://localhost:8000
 
 ## License
 
-The MIT License, Copyright (c) 2016 Michal Pietrzak
+O projeto Consultório Itix foi desenvolvido por Rafael Luis da Costa Coelho sob a licença do MIT.
