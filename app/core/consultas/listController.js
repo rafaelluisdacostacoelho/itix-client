@@ -1,9 +1,10 @@
-(function () {
+(function() {
     'use strict';
 
-    angular.module('app.todos.list', ['ngAnimate'])
+    angular
+        .module('app.consultas.list', ['ngAnimate'])
 
-            .controller('TodosListController', TodosListController);
+        .controller('TodosListController', TodosListController);
 
     TodosListController.$inject = ['$scope'];
 
@@ -13,7 +14,7 @@
         vm.deleteCompleted = deleteCompleted;
 
         function deleteCompleted() {
-            $scope.IC.todos = $scope.IC.todos.filter(function (item) {
+            $scope.IC.consultas = $scope.IC.consultas.filter(function(item) {
                 return !item.done;
             });
         }

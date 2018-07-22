@@ -1,6 +1,6 @@
 {
-    "name": "angularjs-template",
-    "description": "A starter project for AngularJS based on John Papa's style guide",
+    "name": "itix-client",
+    "description": "Trabalhe Conosco - Desafio 01",
     "keywords": [
         "AngularJS",
         "angular",
@@ -12,7 +12,7 @@
         "node",
         "express"
     ],
-    "repository": "https://github.com/pamigomp/angularjs-template",
+    "repository": "https://github.com/rafaelluisdacostacoelho/itix-client",
     "success_url": "/",
     "addons": []
 }

@@ -1,18 +1,18 @@
 /* global expect */
 
-"use strict";
+'use strict';
 
-describe("FooterController", function () {
+describe('FooterController', function() {
     var controller, vm;
 
-    beforeEach(module("app.nav.footer"));
+    beforeEach(module('app.navigation.footer'));
 
-    beforeEach(inject(function ($controller) {
-        controller = $controller("FooterController", {});
+    beforeEach(inject(function($controller) {
+        controller = $controller('FooterController', {});
         vm = controller;
     }));
 
-    it("should be defined", function () {
+    it('should be defined', function() {
         expect(controller).toBeDefined();
     });
 });

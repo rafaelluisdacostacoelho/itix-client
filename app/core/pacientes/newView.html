@@ -1,0 +1,25 @@
+<div class="panel panel-success">
+    <div class="panel-heading">
+        <h3 class="panel-title">Adicionar Paciente</h3>
+    </div>
+    <div class="panel-body">
+        <form name="form" data-ng-submit="vm.adicionarOPaciente()">
+            <div class="form-group">
+                <label class="control-label" for="todoName">Nome:</label>
+                <input id="todo-name" class="form-control" name="nomeDoPaciente" type="text" data-ng-model="vm.paciente.nome" required />
+            </div>
+            <div class="form-group">
+                <label class="control-label" for="todoDate">Data de Nascimento:</label>
+                <input id="paciente-nascimento" class="form-control" ng-model="vm.paciente.nascimento" ng-model-options="{ updateOn: 'blur' }"
+                    moment-picker="vm.nascimento" min-view="month" max-view="month" locale="pt-br" format="L" required>
+            </div>
+
+            <button type="button" id="back-button" data-ui-sref="root.pacientes.list" class="btn btn-default">
+                <span class="glyphicon glyphicon-chevron-left"></span> Voltar
+            </button>
+            <button type="submit" id="add-button" class="btn btn-success" data-ng-disabled="form.$invalid">
+                <span class="glyphicon glyphicon-ok"></span> Adicionar
+            </button>
+        </form>
+    </div>
+</div>

@@ -1,14 +1,12 @@
-(function () {
+(function() {
     'use strict';
 
-    angular.module('app.filters', [])
-
-            .filter('rangeTime', rangeTime);
+    angular.module('app.filters', []).filter('rangeTime', rangeTime);
 
     rangeTime.$inject = [];
 
     function rangeTime() {
-        return function (input, total, halfHour) {
+        return function(input, total, halfHour) {
             total = parseInt(total);
             for (var i = 1; i < total; i++) {
                 if (halfHour) {

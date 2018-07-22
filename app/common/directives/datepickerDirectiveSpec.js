@@ -1,21 +1,23 @@
 /* global expect */
 
-"use strict";
+'use strict';
 
-describe("Datepicker directive", function () {
-    var date, elm, scope;
+describe('Datepicker directive', function() {
+    var date, element, scope;
 
-    beforeEach(module("app.directives.datepicker"));
+    beforeEach(module('app.directives.datepicker'));
 
-    it('should put the date in the model', function () {
-        return inject(function ($compile, $rootScope) {
+    it('should put the date in the model', function() {
+        return inject(function($compile, $rootScope) {
             scope = $rootScope.$new();
-            date = new Date('2016-05-23T00:00:00.000Z');
-            elm = angular.element('<input data-ng-date-picker=\'\' data-ng-model=\'x\'></input>');
-            $compile(elm)(scope);
-            elm.datepicker('setDate', date);
-            $.datepicker._selectDate(elm);
-            expect(scope.x).toEqual('23/05/2016');
+            date = new Date('2018-07-22T00:00:00.000Z');
+            element = angular.element(
+                "<input data-ng-date-picker='' data-ng-model='x'></input>"
+            );
+            $compile(element)(scope);
+            element.datepicker('setDate', date);
+            $.datepicker._selectDate(element);
+            expect(scope.x).toEqual('22/07/2018');
         });
     });
 });

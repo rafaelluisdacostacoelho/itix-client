@@ -1,161 +1,139 @@
-(function () {
+(function() {
     'use strict';
 
-    angular.module('app')
-
-            .config(config);
+    angular.module('app').config(config);
 
     config.$inject = ['$stateProvider', '$urlRouterProvider'];
 
     function config($stateProvider, $urlRouterProvider) {
-        $urlRouterProvider.when('', '/todos/list');
-        $urlRouterProvider.when('/', '/todos/list');
-        $urlRouterProvider.when('/todos', '/todos/list');
-        $urlRouterProvider.when('/todos/', '/todos/list');
-        $urlRouterProvider.when('/mountains', '/mountains/list');
-        $urlRouterProvider.when('/mountains/', '/mountains/list');
+        $urlRouterProvider.when('', '/pacientes/list');
+        $urlRouterProvider.when('/', '/pacientes/list');
+        $urlRouterProvider.when('/pacientes', '/pacientes/list');
+        $urlRouterProvider.when('/pacientes/', '/pacientes/list');
+        $urlRouterProvider.when('/consultas', '/consultas/list');
+        $urlRouterProvider.when('/consultas/', '/consultas/list');
         $urlRouterProvider.otherwise('/');
         $stateProvider
-                .state('root', {
-                    abstract: true,
-                    url: '/',
-                    data: {
-                        title: 'Home',
-                        breadcrumb: 'Home'
+            .state('root', {
+                abstract: true,
+                url: '/',
+                data: {
+                    title: 'Principal',
+                    breadcrumb: 'Principal'
+                },
+                views: {
+                    content: {
+                        template: 'Escolha uma opção do painel de navegação...'
                     },
-                    views: {
-                        'header': {
-                            templateUrl: 'core/navigation/headerView.html',
-                            controller: 'HeaderController',
-                            controllerAs: 'HC'
-                        },
-                        'menu': {
-                            templateUrl: 'core/navigation/menuView.html',
-                            controller: 'MenuController',
-                            controllerAs: 'MC'
-                        },
-                        'breadcrumbs': {
-                            templateUrl: 'core/navigation/breadcrumbsView.html',
-                            controller: 'BreadcrumbsController',
-                            controllerAs: 'BC'
-                        },
-                        'content': {
-                            template: 'Choose option from menu...'
-                        },
-                        'footer': {
-                            templateUrl: 'core/navigation/footerView.html',
-                            controller: 'FooterController',
-                            controllerAs: 'FC'
-                        }
-                    }
-                })
-                .state('root.todos', {
-                    abstract: true,
-                    url: 'todos',
-                    data: {
-                        title: 'Todos',
-                        breadcrumb: 'Todos'
-                    }
-                })
-                .state('root.todos.list', {
-                    url: '/list',
-                    data: {
-                        title: 'To-do list',
-                        breadcrumb: 'List'
+                    navigation: {
+                        templateUrl: 'core/navigation/navigationView.html',
+                        controller: 'NavigationController',
+                        controllerAs: 'vm'
                     },
-                    views: {
-                        'content@': {
-                            templateUrl: 'core/todos/listView.html',
-                            controller: 'TodosListController',
-                            controllerAs: 'TLC'
-                        }
+                    footer: {
+                        templateUrl: 'core/navigation/footerView.html',
+                        controller: 'FooterController',
+                        controllerAs: 'vm'
                     }
-                })
-                .state('root.todos.new', {
-                    url: '/new',
-                    data: {
-                        title: 'New todo',
-                        breadcrumb: 'New'
-                    },
-                    views: {
-                        'content@': {
-                            templateUrl: 'core/todos/newView.html',
-                            controller: 'TodosNewController',
-                            controllerAs: 'TNC'
-                        }
+                }
+            })
+
+            // Pacientes
+            .state('root.pacientes', {
+                abstract: true,
+                url: 'pacientes',
+                data: {
+                    title: 'Pacientes',
+                    breadcrumb: 'Pacientes'
+                }
+            })
+            .state('root.pacientes.list', {
+                url: '/list',
+                data: {
+                    title: 'Lista de pacientes',
+                    breadcrumb: 'Lista'
+                },
+                views: {
+                    'content@': {
+                        templateUrl: 'core/pacientes/listView.html',
+                        controller: 'ListaDePacientesController',
+                        controllerAs: 'vm'
                     }
-                })
-                .state('root.json', {
-                    url: 'json',
-                    data: {
-                        title: 'Json',
-                        breadcrumb: 'Json'
-                    },
-                    views: {
-                        'content@': {
-                            templateUrl: 'core/json/jsonView.html',
-                            controller: 'JsonController',
-                            controllerAs: 'JC'
-                        }
+                }
+            })
+            .state('root.pacientes.new', {
+                url: '/new',
+                data: {
+                    title: 'Novo Paciente',
+                    breadcrumb: 'Novo'
+                },
+                views: {
+                    'content@': {
+                        templateUrl: 'core/pacientes/newView.html',
+                        controller: 'NovoPacienteController',
+                        controllerAs: 'vm'
                     }
-                })
-                .state('root.mountains', {
-                    abstract: true,
-                    url: 'mountains',
-                    data: {
-                        title: 'Mountains',
-                        breadcrumb: 'Mountains'
+                }
+            })
+            .state('root.pacientes.paciente', {
+                abstract: true,
+                url: '/:pacienteId',
+                data: {
+                    title: '[Nome do Paciente]',
+                    breadcrumb: '[Nome do Paciente]'
+                }
+            })
+            .state('root.pacientes.paciente.details', {
+                url: '/details',
+                data: {
+                    title: 'Detalhes do Paciente',
+                    breadcrumb: 'Detalhes'
+                },
+                views: {
+                    'content@': {
+                        templateUrl: 'core/pacientes/detailsView.html',
+                        controller: 'DetalhesDoPacienteController',
+                        controllerAs: 'vm'
                     }
-                })
-                .state('root.mountains.list', {
-                    url: '/list',
-                    data: {
-                        title: 'List of mountains',
-                        breadcrumb: 'List'
-                    },
-                    views: {
-                        'content@': {
-                            templateUrl: 'core/mountains/listView.html',
-                            controller: 'MountainsListController',
-                            controllerAs: 'MLC'
-                        }
+                }
+            })
+
+            // Consultas
+            .state('root.consultas', {
+                abstract: true,
+                url: 'consultas',
+                data: {
+                    title: 'Pacientes',
+                    breadcrumb: 'Pacientes'
+                }
+            })
+            .state('root.consultas.list', {
+                url: '/list',
+                data: {
+                    title: 'Lista de consultas',
+                    breadcrumb: 'Lista'
+                },
+                views: {
+                    'content@': {
+                        templateUrl: 'core/consultas/listView.html',
+                        controller: 'ListaDePacientesController',
+                        controllerAs: 'PLC'
                     }
-                })
-                .state('root.mountains.mountain', {
-                    abstract: true,
-                    url: '/:mountainId',
-                    data: {
-                        title: '[Mountain name]',
-                        breadcrumb: '[Mountain name]'
+                }
+            })
+            .state('root.consultas.new', {
+                url: '/new',
+                data: {
+                    title: 'Novo Paciente',
+                    breadcrumb: 'Novo'
+                },
+                views: {
+                    'content@': {
+                        templateUrl: 'core/consultas/newView.html',
+                        controller: 'NovoPacienteController',
+                        controllerAs: 'PNC'
                     }
-                })
-                .state('root.mountains.mountain.details', {
-                    url: '/details',
-                    data: {
-                        title: 'Mountain details',
-                        breadcrumb: 'Details'
-                    },
-                    views: {
-                        'content@': {
-                            templateUrl: 'core/mountains/detailsView.html',
-                            controller: 'MountainsDetailsController',
-                            controllerAs: 'MDC'
-                        }
-                    }
-                })
-                .state('root.form', {
-                    url: 'form',
-                    data: {
-                        title: 'Form',
-                        breadcrumb: 'Form'
-                    },
-                    views: {
-                        'content@': {
-                            templateUrl: 'core/form/formView.html',
-                            controller: 'FormController',
-                            controllerAs: 'FC'
-                        }
-                    }
-                });
+                }
+            });
     }
 })();

@@ -1,27 +1,27 @@
 {
-    "name": "angularjs-template",
+    "name": "itix-client",
     "version": "0.0.4",
     "description": "A starter project for AngularJS based on John Papa's style guide",
     "keywords": [
         "AngularJS",
         "angular",
         "template",
-        "angularjs-template",
+        "itix-client",
         "seed",
         "johnpapa",
         "styleguide",
         "node",
         "express"
     ],
-    "homepage": "https://github.com/pamigomp/angularjs-template",
+    "homepage": "https://github.com/rafaelluisdacostacoelho/itix-client",
     "bugs": {
-        "url": "https://github.com/pamigomp/angularjs-template/issues"
+        "url": "https://github.com/rafaelluisdacostacoelho/itix-client/issues"
     },
     "license": "MIT",
-    "author": "Michal Pietrzak",
+    "author": "Rafael Luis da Costa Coelho",
     "repository": {
         "type": "git",
-        "url": "https://github.com/pamigomp/angularjs-template.git"
+        "url": "https://github.com/rafaelluisdacostacoelho/itix-client.git"
     },
     "main": "server.js",
     "scripts": {

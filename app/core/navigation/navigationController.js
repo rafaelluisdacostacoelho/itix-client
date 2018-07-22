@@ -1,13 +1,13 @@
-(function () {
+(function() {
     'use strict';
 
-    angular.module('app.nav.menu', ['ui.router'])
+    angular
+        .module('app.navigation.navigation', ['ui.router'])
+        .controller('NavigationController', NavigationController);
 
-            .controller('MenuController', MenuController);
+    NavigationController.$inject = ['$state'];
 
-    MenuController.$inject = ['$state'];
-
-    function MenuController($state) {
+    function NavigationController($state) {
         var vm = this;
 
         vm.getClass = getClass;

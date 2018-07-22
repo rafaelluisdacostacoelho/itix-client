@@ -2,31 +2,33 @@
 
 'use strict';
 
-describe('AngularJS Template', function () {
+describe('Itix - Consultório', function() {
     var page = require('./pages/page.js');
-
-    it('should automatically redirect to /todos/list when location hash/fragment is empty', function () {
+    /*
+    it('should automatically redirect to /todos/list when location hash/fragment is empty', function() {
         page.getHomepage();
         expect(page.getLocation()).toEqual('/todos/list');
     });
 
-    it('should display name, version and author of app in footer ', function () {
+    it('should display name, version and author of app in footer ', function() {
         page.getHomepage();
-        expect(page.getAppFooter()).toEqual('AngularJS Template app v0.0.4 by Michal Pietrzak');
+        expect(page.getAppFooter()).toEqual(
+            'Consultório Itix v1.0.0 por Rafael Luis da Costa Coelho'
+        );
     });
-
-    describe('todos list', function () {
+    
+    describe('todos list', function() {
         var todosListPage = require('./pages/todosListPage.js');
 
-        beforeEach(function () {
+        beforeEach(function() {
             todosListPage.getTodosListPage();
         });
 
-        it('should render todos list when user navigates to /todos/list', function () {
+        it('should render todos list when user navigates to /todos/list', function() {
             expect(todosListPage.getPanelTitle()).toEqual('To-do list');
         });
 
-        it('should delete completed todos', function () {
+        it('should delete completed todos', function() {
             expect(todosListPage.isRowForNamePresent('Date')).toBeTruthy();
             expect(todosListPage.isRowForNamePresent('Gym')).toBeTruthy();
             expect(todosListPage.isRowForNamePresent('Homework')).toBeTruthy();
@@ -42,7 +44,7 @@ describe('AngularJS Template', function () {
             expect(todosListPage.isRowForNamePresent('Meeting')).toBeFalsy();
         });
 
-        it('should filter tasks when user type text into search field', function () {
+        it('should filter tasks when user type text into search field', function() {
             var textToSearch = 'Homework';
 
             todosListPage.searchText(textToSearch);
@@ -52,24 +54,24 @@ describe('AngularJS Template', function () {
             expect(todosListPage.isRowForNamePresent('Meeting')).toBeFalsy();
         });
 
-        it('should render add task when user click on \'Add todo\' button', function () {
+        it("should render add task when user click on 'Add todo' button", function() {
             todosListPage.clickAddButton();
             expect(todosListPage.getPanelTitle()).toEqual('Add todo');
         });
     });
-
-    describe('new todo', function () {
+ 
+    describe('new todo', function() {
         var todosNewPage = require('./pages/todosNewPage.js');
 
-        beforeEach(function () {
+        beforeEach(function() {
             todosNewPage.getTodosNewPage();
         });
 
-        it('should render mountain\'a details when user navigates to /todos/new', function () {
+        it("should render mountain'a details when user navigates to /todos/new", function() {
             expect(todosNewPage.getPanelTitle()).toEqual('Add todo');
         });
 
-        it('should add new todo when user click on add button', function () {
+        it('should add new todo when user click on add button', function() {
             var todoName = 'Programming!';
             var todoType = 'Science';
             var todoEstimatedTime = '6 h';
@@ -90,90 +92,98 @@ describe('AngularJS Template', function () {
         });
     });
 
-    describe('json', function () {
+    describe('json', function() {
         var jsonPage = require('./pages/jsonPage.js');
 
-        beforeEach(function () {
+        beforeEach(function() {
             jsonPage.getJsonPage();
         });
 
-        it('should render json view when user navigates to /json', function () {
+        it('should render json view when user navigates to /json', function() {
             expect(jsonPage.isTextPresent()).toBeTruthy();
         });
 
-        it('should automatically redirect to /todos/list when user click on app title', function () {
+        it('should automatically redirect to /todos/list when user click on app title', function() {
             page.clickAppTitle();
             expect(page.getLocation()).toEqual('/todos/list');
         });
     });
 
-    describe('mountains\' list', function () {
+    describe("mountains' list", function() {
         var mountainsListPage = require('./pages/mountainsListPage.js');
 
-        beforeEach(function () {
+        beforeEach(function() {
             mountainsListPage.getMountainsListPage();
         });
 
-        it('should render mounatins\' list when user navigates to /mountains/list', function () {
-            expect(mountainsListPage.getPanelTitle()).toEqual('List of mountains');
+        it("should render mounatins' list when user navigates to /mountains/list", function() {
+            expect(mountainsListPage.getPanelTitle()).toEqual(
+                'List of mountains'
+            );
         });
 
-        it('should render details of mountain when user click on mountain', function () {
+        it('should render details of mountain when user click on mountain', function() {
             var mountainName = 'Annapurna';
 
             mountainsListPage.clickMountainLink(mountainName);
 
             var mountainsDetailsPage = require('./pages/mountainsDetailsPage.js');
 
-            expect(mountainsDetailsPage.getPanelTitle()).toEqual('Details of ' + mountainName);
+            expect(mountainsDetailsPage.getPanelTitle()).toEqual(
+                'Details of ' + mountainName
+            );
         });
     });
 
-    describe('mountain\'s details', function () {
+    describe("mountain's details", function() {
         var mountainsDetailsPage = require('./pages/mountainsDetailsPage.js');
         var mountainId = 10;
         var mountainName = 'Annapurna';
 
-        beforeEach(function () {
+        beforeEach(function() {
             mountainsDetailsPage.getMountainsDetailsPage(mountainId);
         });
 
-        it('should render mountain\'a details when user navigates to /mountains/10/details', function () {
-            expect(mountainsDetailsPage.getPanelTitle()).toEqual('Details of ' + mountainName);
+        it("should render mountain'a details when user navigates to /mountains/10/details", function() {
+            expect(mountainsDetailsPage.getPanelTitle()).toEqual(
+                'Details of ' + mountainName
+            );
         });
 
-        it('should delete mountain from mountains\' list when user click on delete button', function () {
+        it("should delete mountain from mountains' list when user click on delete button", function() {
             mountainsDetailsPage.clickDeleteButton();
 
             var mountainsListPage = require('./pages/mountainsListPage.js');
 
-            expect(mountainsListPage.isMountainPresent(mountainName)).toBeFalsy();
+            expect(
+                mountainsListPage.isMountainPresent(mountainName)
+            ).toBeFalsy();
         });
 
-        it('should back to mountains\' list when user click on back button', function () {
+        it("should back to mountains' list when user click on back button", function() {
             mountainsDetailsPage.clickBackButton();
 
             expect(page.getLocation()).toEqual('/mountains/list');
         });
     });
 
-    describe('form', function () {
+    describe('form', function() {
         var formPage = require('./pages/formPage.js');
 
-        beforeEach(function () {
+        beforeEach(function() {
             formPage.getFormPage();
         });
 
-        it('should render form when user navigates to /form', function () {
+        it('should render form when user navigates to /form', function() {
             expect(formPage.getPanelTitle()).toEqual('Form');
         });
 
-        it('should save form when user click on save button', function () {
-            var name = 'Michal';
-            var surname = 'Pietrzak';
-            var email = 'm.pietrzak93@yahoo.com';
-            var age = '22';
-            var note = 'It is an awesome angular template!';
+        it('should save form when user click on save button', function() {
+            var name = 'Rafael';
+            var surname = 'Luis da Costa Coelho';
+            var email = 'contato@rafaelluisdacostacoelho.info';
+            var age = '29';
+            var note = 'It is an awesome angular app!';
 
             formPage.typeName(name);
             formPage.typeSurname(surname);
@@ -189,4 +199,5 @@ describe('AngularJS Template', function () {
             expect(formPage.getSavedContactForm()).toContain(note);
         });
     });
+    */
 });

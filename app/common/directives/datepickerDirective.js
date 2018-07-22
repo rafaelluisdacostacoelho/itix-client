@@ -1,9 +1,9 @@
-(function () {
+(function() {
     'use strict';
 
-    angular.module('app.directives.datepicker', [])
-
-            .directive('ngDatePicker', ngDatePicker);
+    angular
+        .module('app.directives.datepicker', [])
+        .directive('ngDatePicker', ngDatePicker);
 
     ngDatePicker.$inject = [];
 

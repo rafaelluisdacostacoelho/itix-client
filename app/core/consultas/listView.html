@@ -1,0 +1,57 @@
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <h3 class="panel-title">To-do list</h3>
+    </div>
+    <div class="panel-body">
+        <div class="input-group">
+            <span class="input-group-addon">
+                <i class="glyphicon glyphicon-search"></i>
+            </span>
+            <input id="search" type="search" class="form-control" placeholder="Search..." data-ng-model="search">
+        </div>
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th class="col-xs-1">No.</th>
+                        <th class="col-xs-7">Name</th>
+                        <th class="col-xs-1">Estimation</th>
+                        <th class="col-xs-1">Date</th>
+                        <th class="col-xs-1">Ico</th>
+                        <th class="col-xs-1">Completed</th>
+                    </tr>
+                </thead>
+                <tr data-ng-repeat="consulta in IC.consultas | filter: search" class="repeat-animation">
+                    <td>{{$index + 1}}. </td>
+                    <td>
+                        <span class="done-{{consulta.done}}">{{consulta.title}}</span>
+                    </td>
+                    <td>
+                        <span class="done-{{consulta.done}}">({{consulta.estimates}}h)</span>
+                    </td>
+                    <td>
+                        <span class="done-{{consulta.done}}">{{consulta.date}}</span>
+                    </td>
+                    <td>
+                        <span class="glyphicon glyphicon-{{consulta.type.gico}} done-{{consulta.done}}" title="{{consulta.type.name}}"></span>
+                    </td>
+                    <td>
+                        <input type="checkbox" data-ng-model="consulta.done" title="Mark as completed" />
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-body">
+        <button id="delete-btn" class="btn btn-danger" data-ng-click="PLC.remove()">
+            Remover
+            <span class="glyphicon glyphicon-remove"></span>
+        </button>
+        <button id="add-btn" data-ui-sref="root.consultas.new" class="btn btn-success">
+            Nova Consulta
+            <span class="glyphicon glyphicon-plus"></span>
+        </button>
+    </div>
+</div>

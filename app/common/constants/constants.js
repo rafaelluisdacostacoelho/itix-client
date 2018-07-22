@@ -1,9 +1,10 @@
-(function () {
+(function() {
     'use strict';
 
-    angular.module('app')
+    angular
+        .module('app')
 
-            .constant('APP_AUTHOR', 'Michal Pietrzak')
-            .constant('APP_NAME', 'AngularJS Template')
-            .constant('APP_VERSION', '0.0.4');
+        .constant('APP_AUTHOR', 'Rafael Luis da Costa Coelho')
+        .constant('APP_NAME', 'Itix - Consultorio')
+        .constant('APP_VERSION', '1.0.0');
 })();

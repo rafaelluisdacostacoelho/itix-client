@@ -1,16 +1,21 @@
 /* global expect */
 
-"use strict";
+'use strict';
 
-describe("About directive", function () {
+describe('About directive', function() {
     var elm, scope;
 
-    beforeEach(module("app.directives.about"));
+    beforeEach(module('app.directives.about'));
 
-    it("should return name, version and author of app", inject(function ($rootScope, $compile) {
+    it('should return name, version and author of app', inject(function(
+        $rootScope,
+        $compile
+    ) {
         scope = $rootScope.$new();
         elm = angular.element('<span app-about></span>');
         $compile(elm)(scope);
-        expect(elm.text()).toEqual("AngularJS Template app v0.0.4 by Michal Pietrzak");
+        expect(elm.text()).toEqual(
+            'Itix - Consultório app v1.0.0 por Rafael Luis da Costa Coelho'
+        );
     }));
 });
