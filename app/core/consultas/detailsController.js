@@ -14,6 +14,7 @@
     DetalhesDaConsultaController.$inject = [
         '$stateParams',
         '$state',
+        'toastr',
         'consultasService',
         'pacientesService'
     ];
@@ -21,6 +22,7 @@
     function DetalhesDaConsultaController(
         $stateParams,
         $state,
+        toastr,
         consultasService,
         pacientesService
     ) {
@@ -54,12 +56,19 @@
                 });
         }
         function atualizarAConsulta() {
-            vm.consulta.dataInicial = moment(vm.consulta.dataInicial).format('YYYY-MM-DD HH:mm:ss');
-            vm.consulta.dataFinal = moment(vm.consulta.dataFinal).format('YYYY-MM-DD HH:mm:ss');
+            vm.consulta.dataInicial = moment(vm.consulta.dataInicial).format(
+                'YYYY-MM-DD HH:mm:ss'
+            );
+            vm.consulta.dataFinal = moment(vm.consulta.dataFinal).format(
+                'YYYY-MM-DD HH:mm:ss'
+            );
             consultasService
                 .atualizarAConsulta(vm.consulta.id, vm.consulta)
                 .then(function() {
                     $state.go('root.consultas.list');
+                })
+                .catch(function(error) {
+                    toastr.error(error.data);
                 });
         }
 

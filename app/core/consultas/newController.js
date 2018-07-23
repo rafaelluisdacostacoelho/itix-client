@@ -5,9 +5,17 @@
         .module('app.consultas.new', ['ui.router', 'app.services.consultas'])
         .controller('NovaConsultaController', NovaConsultaController);
 
-    NovaConsultaController.$inject = ['$state', 'consultasService', 'pacientesService'];
+    NovaConsultaController.$inject = [
+        '$state',
+        'consultasService',
+        'pacientesService'
+    ];
 
-    function NovaConsultaController($state, consultasService, pacientesService) {
+    function NovaConsultaController(
+        $state,
+        consultasService,
+        pacientesService
+    ) {
         var vm = this;
 
         vm.pacientes = [];
@@ -23,11 +31,20 @@
         }
 
         function adicionarAConsulta() {
-            vm.consulta.dataInicial = moment(vm.consulta.dataInicial).format('YYYY-MM-DD HH:mm:ss');
-            vm.consulta.dataFinal = moment(vm.consulta.dataFinal).format('YYYY-MM-DD HH:mm:ss');
-            consultasService.adicionarAConsulta(vm.consulta).then(function() {
-                $state.go('root.consultas.list');
-            });
+            vm.consulta.dataInicial = moment(vm.consulta.dataInicial).format(
+                'YYYY-MM-DD HH:mm:ss'
+            );
+            vm.consulta.dataFinal = moment(vm.consulta.dataFinal).format(
+                'YYYY-MM-DD HH:mm:ss'
+            );
+            consultasService
+                .adicionarAConsulta(vm.consulta)
+                .then(function() {
+                    $state.go('root.consultas.list');
+                })
+                .catch(function(error) {
+                    toastr.error(error.data);
+                });
         }
     }
 })();
