@@ -5,14 +5,12 @@
 describe('NavigationController', function() {
     var scope, state, controller, vm;
 
-    beforeEach(module('app.navigation.navigation'));
+    beforeEach(module('app.navigation'));
 
     beforeEach(inject(function($controller, $rootScope, $state) {
         state = $state;
-        scope = $rootScope.$new();
         state.current.name = 'root.pacientes.list';
         controller = $controller('NavigationController', {
-            $scope: scope,
             $state: state
         });
         vm = controller;

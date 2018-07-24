@@ -3,7 +3,6 @@
 
     angular
         .module('app.directives.about', ['app'])
-
         .directive('appAbout', appAbout);
 
     appAbout.$inject = ['APP_NAME', 'APP_VERSION', 'APP_AUTHOR'];

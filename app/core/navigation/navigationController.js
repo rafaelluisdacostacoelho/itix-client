@@ -2,7 +2,7 @@
     'use strict';
 
     angular
-        .module('app.navigation.navigation', ['ui.router'])
+        .module('app.navigation', ['ui.router'])
         .controller('NavigationController', NavigationController);
 
     NavigationController.$inject = ['$state'];

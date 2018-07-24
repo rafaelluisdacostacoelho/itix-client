@@ -3,11 +3,10 @@
 
     angular.module('app', [
         'ui.router',
-        'app.index',
         'moment-picker',
         'toastr',
         'app.navigation.footer',
-        'app.navigation.navigation',
+        'app.navigation',
         'app.pacientes.new',
         'app.pacientes.details',
         'app.pacientes.list',

@@ -3,13 +3,12 @@
 'use strict';
 
 describe('FooterController', function() {
-    var controller, vm;
+    var controller;
 
     beforeEach(module('app.navigation.footer'));
 
     beforeEach(inject(function($controller) {
         controller = $controller('FooterController', {});
-        vm = controller;
     }));
 
     it('should be defined', function() {
