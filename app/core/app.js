@@ -14,6 +14,7 @@
         'app.consultas.details',
         'app.consultas.list',
         'app.directives.about',
-        'app.filters'
+        'app.filters',
+        'app.contants'
     ]);
 })();

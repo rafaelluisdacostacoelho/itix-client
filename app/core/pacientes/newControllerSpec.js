@@ -3,19 +3,24 @@
 'use strict';
 
 describe('NovoPacienteController', function() {
-    var state, vm;
-    beforeEach(
-        angular.mock.module(function($provide) {
-            $provide.service('pacientesService', function pacientesService() {
-                return function adicionarOPaciente(paciente) {
-                    return $http.post('assets/data/pacientes.json', paciente);
-                };
-            });
-        })
-    );
+    var state,
+        pacientesService,
+        vm,
+        flag = 'success';
+
     beforeEach(module('app.pacientes.new'));
+
     beforeEach(inject(function($controller, $state, _pacientesService_) {
         state = $state;
+        pacientesService = _pacientesService_;
+        spyOn(pacientesService, 'adicionarOPaciente').and.callFake(function() {
+            return {
+                then: function(successCallback, errorCallback) {
+                    if (flag === 'success') successCallback();
+                    else errorCallback('Error');
+                }
+            };
+        });
         vm = $controller('NovoPacienteController', {
             $state: $state,
             pacientesService: _pacientesService_

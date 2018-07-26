@@ -5,9 +5,9 @@
         .module('app.pacientes.list', ['ngAnimate', 'app.services.pacientes'])
         .controller('ListaDePacientesController', ListaDePacientesController);
 
-    ListaDePacientesController.$inject = ['$log', 'pacientesService'];
+    ListaDePacientesController.$inject = ['pacientesService'];
 
-    function ListaDePacientesController($log, pacientesService) {
+    function ListaDePacientesController(pacientesService) {
         var vm = this;
 
         vm.pacientes = [];
