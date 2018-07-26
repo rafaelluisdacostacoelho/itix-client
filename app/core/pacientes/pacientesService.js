@@ -5,10 +5,10 @@
         .module('app.services.pacientes', [])
         .factory('pacientesService', pacientesService);
 
-    pacientesService.$inject = ['$http'];
+    pacientesService.$inject = ['$http', 'ENVIRONMENT'];
 
-    function pacientesService($http) {
-        var url = 'https://localhost:44331/api/pacientes';
+    function pacientesService($http, ENVIRONMENT) {
+        var url = ENVIRONMENT.api.url + '/pacientes';
 
         return {
             adicionarOPaciente: adicionarOPaciente,

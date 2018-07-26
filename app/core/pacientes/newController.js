@@ -10,6 +10,8 @@
     function NovoPacienteController($state, pacientesService) {
         var vm = this;
 
+        vm.paciente = {};
+
         vm.adicionarOPaciente = adicionarOPaciente;
 
         function adicionarOPaciente() {

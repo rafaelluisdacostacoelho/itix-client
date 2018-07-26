@@ -1,6 +1,6 @@
 'use strict';
 
-module.exports = function (config) {
+module.exports = function(config) {
     config.set({
         basePath: './',
         files: [
@@ -12,9 +12,7 @@ module.exports = function (config) {
             'app/bower_components/angular-ui-router/release/angular-ui-router.js',
             'app/bower_components/bootstrap/dist/js/bootstrap.js',
             'app/core/**/*.js',
-            'app/common/**/*.js',
-            'app/assets/**/*.js',
-            'tests/unit/**/*.js'
+            'app/common/**/*.js'
         ],
         exclude: [],
         preprocessors: {
