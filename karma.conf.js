@@ -18,7 +18,7 @@ module.exports = function(config) {
         preprocessors: {
             'app/!(bower_components)/**/!(*Spec).js': ['coverage']
         },
-        reporters: ['dots', 'junit', 'coverage'],
+        reporters: ['kjhtml', 'dots', 'junit', 'coverage'],
         autoWatch: true,
         colors: true,
         frameworks: ['jasmine'],
@@ -29,7 +29,8 @@ module.exports = function(config) {
             'karma-phantomjs-launcher',
             'karma-jasmine',
             'karma-junit-reporter',
-            'karma-coverage'
+            'karma-coverage',
+            'karma-jasmine-html-reporter'
         ],
         singleRun: false,
         coverageReporter: {
