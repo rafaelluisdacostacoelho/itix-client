@@ -2,7 +2,11 @@
     'use strict';
 
     angular
-        .module('app.consultas.new', ['ui.router', 'app.services.consultas'])
+        .module('app.consultas.new', [
+            'ui.router',
+            'app.services.consultas',
+            'app.services.pacientes'
+        ])
         .controller('NovaConsultaController', NovaConsultaController);
 
     NovaConsultaController.$inject = [
@@ -19,13 +23,14 @@
         var vm = this;
 
         vm.pacientes = [];
+        vm.consulta = {};
 
         vm.adicionarAConsulta = adicionarAConsulta;
 
         obterOsPacientes();
 
         function obterOsPacientes() {
-            return pacientesService.obterOsPacientes().then(function(data) {
+            pacientesService.obterOsPacientes().then(function(data) {
                 vm.pacientes = data;
             });
         }
@@ -37,14 +42,14 @@
             vm.consulta.dataFinal = moment(vm.consulta.dataFinal).format(
                 'YYYY-MM-DD HH:mm:ss'
             );
-            consultasService
-                .adicionarAConsulta(vm.consulta)
-                .then(function() {
+            consultasService.adicionarAConsulta(vm.consulta).then(
+                function() {
                     $state.go('root.consultas.list');
-                })
-                .catch(function(error) {
+                },
+                function(error) {
                     toastr.error(error.data);
-                });
+                }
+            );
         }
     }
 })();

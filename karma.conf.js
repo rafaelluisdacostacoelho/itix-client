@@ -11,8 +11,11 @@ module.exports = function(config) {
             'app/bower_components/angular-mocks/angular-mocks.js',
             'app/bower_components/angular-ui-router/release/angular-ui-router.js',
             'app/bower_components/bootstrap/dist/js/bootstrap.js',
+            'app/bower_components/moment/min/moment-with-locales.min.js',
+            'app/bower_components/angular-moment-picker/dist/angular-moment-picker.min.js',
             'app/core/**/*.js',
-            'app/common/**/*.js'
+            'app/common/**/*.js',
+            'tests/unit/init.js'
         ],
         exclude: [],
         preprocessors: {
